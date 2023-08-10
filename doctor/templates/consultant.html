@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Consultants {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3>All Consultants</h3><hr>
+    {% for cat in alldepartment %}
+    <img src="{{cat.image}}" alt="" class="img-fluid" style="height: 200px; object-fit: contain;">
+    <h4>{{cat.title}}</h4><hr>
+    {% comment %} <div class="row">
+        {% for p in cat.product_set.all %}
+        <div class="col-md-3">
+            <div class="m-4">
+                <h4><a href="{% url 'ecomapp:productdetail' p.slug %}">{{p.title}}</a></h4>
+                <img src="{{p.image.url}}" alt="" class="img-fluid" style="height: 2500; object-fit: cover;">
+                <p class="mt-3">Price: <strike>Rs. {{p.marked_price}}</strike> Rs. {{p.selling_price}}</p>
+                <a href="{% url 'ecomapp:addtocart' p.id %}" class="btn btn-primary">Add To Cart</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div> {% endcomment %}
+    {% endfor %}
+</div>
+{% endblock %}

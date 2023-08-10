@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Detail Information</h3><hr>
+            <p><span class="font-weight-bold">Name: </span> {{patient.full_name}}</p>
+            <p><span class="font-weight-bold">Username: </span> {{patient.user.username}}</p>
+            <p><span class="font-weight-bold">Email: </span> {{patient.user.email}}</p>
+            <p><span class="font-weight-bold">Image: </span><img src="{{patient.image}}" alt="" class="img-fluid" style="height: 200px; object-fit: contain;"></p>
+            {% comment %} <p><span class="font-weight-bold">Joined on: </span> {{customer.joined_on}}</p> {% endcomment %}
+        </div>
+        <div class="col-md-8">
+            <h3>Previous Appointments</h3>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Appointment ID</th>
+                        <th> Patient Name </th>
+                        <th>Department</th>
+                        <th>Consultant</th>
+                        <th>Consultant Type </th>
+                        <th>Date</th>
+                        <th>Timeslot</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appoint in appointmentss %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{appoint.uid}}</td>
+                        <td>{{appoint.name}}</td>
+                        <td>{{appoint.department}}</td>
+                        <td>{{appoint.consultant}}</td>
+                        <td>{{appoint.consultant_type}}</td>
+                        <td>{{appoint.date}}</td>
+                        <td>{{appoint.timeslot}}</td>
+                     
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
